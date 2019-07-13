@@ -13,6 +13,18 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                <?php
+                   $query="SELECT * FROM category";
+                   $select_all_cat_query = mysqli_query($connection,$query);
+                    
+                   while($row=mysqli_fetch_assoc($select_all_cat_query)){
+                       $cat_title=$row["cat_title"];
+                       echo "<li><a href='#'>{$cat_title}</a></li>";
+                   }
+                ?>
+                   
+                   
+<!--
                     <li>
                         <a href="#">About</a>
                     </li>
@@ -22,6 +34,7 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
