@@ -13,9 +13,24 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Blank Page
-                            <small>Subheading</small>
+                            Welcome To Admin
+                            <small>Author</small>
                         </h1>
+                        
+                        <div class="col-xs-6">
+                        <form action="">
+                            
+                            <div class="form_group">
+                               <label for="cat-title">Add Category</label>
+                                <input type="text" class="form-control" name="cat_title">
+                            </div>
+                             <div class="form_group">
+                                <input class="btn btn-primary" type="submit" name="submit" value="add category">
+                            </div>
+                        </form></div>
+                        
+                        
+                        
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
