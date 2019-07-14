@@ -34,7 +34,19 @@
                                echo "<td>$post_id</td>";
                                echo "<td>$post_author</td>";
                                echo "<td>$cat_title</td>";
-                               echo "<td>$cat_category_id</td>";
+                                   
+                                        //displaying category name insteed of cat id
+                                        $query="SELECT * FROM category where cat_id={$cat_category_id}";
+                                                $select_category = mysqli_query($connection,$query);
+                                                while($row=mysqli_fetch_assoc($select_category)){
+                                                $cat_id=$row["cat_id"];
+                                                $cat_title=$row["cat_title"];
+                                                
+                                                confirmQuery($select_category) ;  
+                                   
+                                                echo "<td>{$cat_title}</td>";   
+                                                }
+                                   
                                echo "<td>$cat_status</td>";
                                echo "<td><img class='img-responsive' width='100' src='../images/$cat_image' alt='image'></td>";
                                echo "<td>$cat_tags</td>";
