@@ -23,11 +23,15 @@ if(isset($_POST['create_post'])){
         $query="insert into posts (post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) values('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}') ";
         
         $add_post_query=mysqli_query($connection,$query);
+        
+        confirmQuery($add_post_query); 
 
-        if(!$add_post_query){
-            die ('Query Fail'.mysqli_error($connection));
-           
-        }
+//
+////        if(!$add_post_query){
+////            die ('Query Fail'.mysqli_error($connection));
+////           
+////        }
+//
 
      
     

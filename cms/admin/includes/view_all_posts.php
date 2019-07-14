@@ -40,22 +40,24 @@
                                echo "<td>$cat_tags</td>";
                                echo "<td>$post_comment_count</td>";
                                echo "<td>$cat_date</td>";
+                               echo "<td><a href='posts.php?source=edit&p_id={$post_id}'>Edit</a></td>";
+                               echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
+                               
                                echo "</tr>";
                                
                                }
                                
                                ?>
                               
-                               <tr>
-                                   <td>1</td>
-                                   <td>Mihindu Ranasinghe</td>
-                                   <td>Bootstrap</td>
-                                   <td>php</td>
-                                   <td>status</td>
-                                   <td>image</td>
-                                   <td>tags</td>
-                                   <td>great</td>
-                                   <td>date</td>
-                               </tr>
+                          
                            </tbody>
                        </table>
+                       <?php  
+                            if(isset($_GET['delete'])){
+                                $the_post_id=$_GET['delete'];
+                                $query="delete from posts where post_id={$the_post_id}";
+                                $post_delete_query=mysqli_query($connection,$query);
+                                header("Location: posts.php");
+                                confirmQuery($post_delete_query);
+                            }
+                        ?>
