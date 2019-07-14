@@ -3,7 +3,7 @@
 if(isset($_POST['create_post'])){
     $post_title=$_POST['title'];
     $post_author=$_POST['author'];
-    $post_category_id=$_POST['post_category_id'];
+    $post_category_id=$_POST['post_category'];
     $post_status=$_POST['status'];
     
     $post_image=$_FILES['image']['name'];
@@ -26,7 +26,7 @@ if(isset($_POST['create_post'])){
         
         confirmQuery($add_post_query); 
 
-//
+//<!--
 ////        if(!$add_post_query){
 ////            die ('Query Fail'.mysqli_error($connection));
 ////           
@@ -48,16 +48,32 @@ if(isset($_POST['create_post'])){
     <input type="text" class="form-control" name="title">
 </div>
 
-<div class="form-group">
-    <label for="post_category">Post Category Id</label>
-    <input type="text" class="form-control" name="post_category_id">
-</div>
+
 
 <div class="form-group">
-    <label for="author">Post Author</label>
-    <input type="text" class="form-control" name="author">
+    <select name="post_category" id="">
+        <?php
+        $query="SELECT * FROM category";
+        $select_category=mysqli_query($connection,$query);
+                    while($row=mysqli_fetch_assoc($select_category)){
+                    $cat_id=$row["cat_id"];
+                    $cat_title=$row["cat_title"];
+                                                
+                    confirmQuery($select_category) ; 
+                        
+                    echo "<option value='$cat_id'>{$cat_title}</option>" ;
+                    }
+        
+        ?>
+    </select>
+    
 </div>
- 
+
+ <div class="form-group">
+    <label for="post_author">Post Author</label>
+    <input type="text" class="form-control" name="author" >
+</div>
+
  <div class="form-group">
     <label for="post_status">Post Status</label>
     <input type="text" class="form-control" name="status">
