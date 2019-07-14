@@ -7,7 +7,7 @@
     }
 
 
-    $query="SELECT * FROM posts";
+    $query="SELECT * FROM posts where post_id=$the_post_id";
     $select_posts_by_id = mysqli_query($connection,$query);
 
 
@@ -22,6 +22,43 @@
         $post_content=$row["post_content"];
         $post_comment_count=$row["post_comment_count"];
         $post_date=$row["post_date"];
+    }
+
+    if(isset($_POST['update_post'])){
+        
+    $post_title=$_POST['title'];
+    $post_author=$_POST['author'];
+    $post_category_id=$_POST['post_category_id'];
+    $post_status=$_POST['status'];
+    
+    $post_image=$_FILES['image']['name'];
+    $post_image_temp=$_FILES['image']['tmp_name'];
+    
+    $post_tags=$_POST['tags'];
+    $post_content=$_POST['content'];
+    $post_date=date('d-m-y');
+    $post_comment_count=4;
+        
+    move_uploaded_file($post_image_temp, "../images/$post_image");
+      
+        if(empty($post_image)){
+             $query="select * from posts where post_id=$the_post_id ";
+            $select_image=mysqli_query($connection,$query);
+            confirmQuery($select_image);
+            
+            while($row=mysqli_fetch_assoc($select_image)){
+                $post_image=$row['post_image'];
+            }
+             
+        }
+        
+        
+        
+        $query="update posts set post_title='{$post_title}',post_category_id='{$post_category_id}',post_date=now(), post_author='{$post_author}', post_status='{$post_status}',post_tags='{$post_tags}',post_content='{$post_content}',post_image='{$post_image}' where post_id='{$the_post_id}' ";
+        
+        $update_post=mysqli_query($connection,$query);
+        confirmQuery($update_post);
+    
     }
 
 ?>  
@@ -64,7 +101,7 @@
 </div>
  
   <div class="form-group">
-    <input type="submit" class="btn btn-primary" name="create_post" value="Publish Post">
+    <input type="submit" class="btn btn-primary" name="update_post" value="Publish Post">
 </div>
 
  
