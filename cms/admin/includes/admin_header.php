@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<?php ob_start();?>
+
 <?php include "../include/db.php"; ?>
+<?php include "functions.php"; ?>
+    
+<?php ob_start();?>
 <html lang="en">
 
 <head>
