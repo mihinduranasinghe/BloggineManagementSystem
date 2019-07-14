@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php ob_start();?>
 <?php include "../include/db.php"; ?>
 <html lang="en">
 
