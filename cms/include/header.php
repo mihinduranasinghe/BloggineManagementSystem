@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<?php include "admin/functions.php"; ?>
 <html lang="en">
+
 
 <head>
 
