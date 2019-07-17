@@ -12,7 +12,7 @@ if(isset($_POST['create_post'])){
     $post_tags=$_POST['tags'];
     $post_content=$_POST['content'];
     $post_date=date('d-m-y');
-    $post_comment_count=4;
+//    $post_comment_count=4;
     
     move_uploaded_file($post_image_temp, "../images/$post_image");
     
@@ -20,7 +20,7 @@ if(isset($_POST['create_post'])){
        
         
         
-        $query="insert into posts (post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) values('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}') ";
+        $query="insert into posts (post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) values('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}',  '{$post_status}') ";
         
         $add_post_query=mysqli_query($connection,$query);
         

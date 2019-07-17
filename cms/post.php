@@ -75,7 +75,10 @@
                         $add_comment_query=mysqli_query($connection,$query);
         
                         confirmQuery($add_comment_query); 
-
+                        
+                        
+                        $query="update posts set post_comment_count=post_comment_count+1 where post_id=$id";
+                        $increase_comment_query=mysqli_query($connection,$query);
                         
                         
                         
@@ -133,7 +136,7 @@
                         <h4 class="media-heading"><?php echo $comment_author; ?>
                             <small><?php echo $comment_date; ?></small>
                         </h4>
-                        <?php echo $comment_content; ?>
+                        <?php echo $comment_content ; ?>
                     </div>
                 </div>
                     
@@ -147,7 +150,7 @@
 
                
 
-                <!-- Comment -->
+                   <!-- Comment -->
           
 
             
