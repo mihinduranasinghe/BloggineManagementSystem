@@ -10,7 +10,7 @@
                                    <th>Date</th>
                                    <th>Approve</th>
                                    <th>Unapprove</th>
-                                   <th>Edit</th>
+                                  
                                    <th>Delete</th>
                                </tr> 
                            </thead>
@@ -67,8 +67,8 @@
                                echo "<td><a href='posts.php?source=edit&p_id='>Approve</a></td>";
                                echo "<td><a href='posts.php?delete='>Unapprove</a></td>";
                               
-                               echo "<td><a href='posts.php?source=edit&p_id='>Edit</a></td>";
-                               echo "<td><a href='posts.php?delete='>Delete</a></td>";
+                               
+                               echo "<td><a href='comments.php?delete=$comment_id'>Delete</a></td>";
                                
                                echo "</tr>";
                                
@@ -81,10 +81,10 @@
                        </table>
                        <?php  
                             if(isset($_GET['delete'])){
-                                $the_post_id=$_GET['delete'];
-                                $query="delete from posts where post_id={$the_post_id}";
-                                $post_delete_query=mysqli_query($connection,$query);
-                                header("Location: posts.php");
-                                confirmQuery($post_delete_query);
+                                $the_comment_id=$_GET['delete'];
+                                $query="delete from comments where comment_id={$the_comment_id}";
+                                $comment_delete_query=mysqli_query($connection,$query);
+                                header("Location: comments.php");
+                                confirmQuery($comment_delete_query);
                             }
                         ?>
