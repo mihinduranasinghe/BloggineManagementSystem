@@ -150,6 +150,12 @@
 <!-- ...................................................................................................................... charts starting -->
               
               <?php
+                
+                         $query="select * from posts where post_status = 'published'";
+                        $select_all_published_posts = mysqli_query($connection,$query);
+                        $published_post_count=mysqli_num_rows($select_all_published_posts);
+                
+                
                         $query="select * from posts where post_status = 'draft'";
                         $select_all_draft_posts = mysqli_query($connection,$query);
                         $draft_post_count=mysqli_num_rows($select_all_draft_posts);
@@ -177,10 +183,10 @@
              
             
             <?php
-            $element_text = ['Active posts','Draft Posts','categories', 'Users','subscribers', 'comments','Pending Comments'];
-            $element_count = [$post_count,$draft_post_count,$category_count, $user_count,$subscribe_users_count, $comment_count,$unapproved_comment_count];
+            $element_text = ['All Posts','Active posts','Draft Posts','categories', 'Users','subscribers', 'comments','Pending Comments'];
+            $element_count = [$post_count,$published_post_count,$draft_post_count,$category_count, $user_count,$subscribe_users_count,  $comment_count,$unapproved_comment_count];
             
-            for($i = 0; $i < 7 ; $i++){
+            for($i = 0; $i < 8 ; $i++){
                 echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
             }
             
