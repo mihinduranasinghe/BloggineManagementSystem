@@ -5,6 +5,9 @@
                   
                 
                 ?>
+      
+                
+                
                 <!-- Blog Search Well -->
                 <div class="well">
                     <h4>Blog Search</h4>
@@ -20,6 +23,29 @@
                     </form><!-- search form -->
                     <!-- /.input-group -->
                 </div>
+                
+                          <!--Login form -->
+                <div class="well">
+                    <h4>Log In</h4>
+                    <form action="include/login.php" method="post">
+                    <div class="form-group">
+                        <input name="username" type="text" class="form-control" placeholder="Enter Username">
+                    </div>
+                        
+                        <div class="form-group">
+                         
+                        <input name="password" type="password" class="form-control" placeholder="Enter Password">
+                        
+                    </div>
+                    
+                    <span class="input-group-button">
+                        <button type="submit" class="btn btn-primary" name="login">Log In</button>
+                    </span>
+                    </form><!-- search form -->
+                    <!-- /.input-group -->
+                </div>
+                
+                
 
                 <!-- Blog Categories Well -->
                 <div class="well">
