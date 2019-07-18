@@ -6,6 +6,7 @@
                                    
                                    <th>First Name</th>
                                    <th>Last Name</th>
+                                   <th>image</th>
                                    <th>email</th>
                                    
                                    <th>role</th>
@@ -39,6 +40,7 @@
                                echo "<td>$user_name</td>";
                                echo "<td>$user_firstname</td>";
                                echo "<td>$user_lastname</td>";
+                               echo "<td><img class='img-responsive' width='100' src='../images/user_images/$user_image' alt='image'></td>";       
                                echo "<td>$user_email</td>";
                                echo "<td>$user_role</td>";        
                                      
@@ -70,7 +72,7 @@
                                    
                                echo "<td><a href='users.php?change_to_admin=$user_id'>Change To Admin</a></td>";
                                echo "<td><a href='users.php?change_to_subscriber=$user_id'>Change To Subscriber</a></td>";
-                              
+                               echo "<td><a href='users.php?source=edit_users&edit_users=$user_id'>Edit</a></td>";
                                
                                echo "<td><a href='users.php?delete=$user_id'>Delete</a></td>";
                                
