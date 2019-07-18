@@ -26,10 +26,9 @@
                       //displaying only 200 letters of every post in the index page
                        
                        $post_status=$row["post_status"];
-                       if($post_status !== 'published'){
-                           echo "<h1 class=t'ext-center'>No Posts Published yet Sorry </h1>";
-                       }
-                       else{
+                       if($post_status == 'published'){
+                          
+                       
                        ?>
                       
                       <h1 class="page-header">

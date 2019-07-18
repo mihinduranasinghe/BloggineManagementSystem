@@ -58,6 +58,7 @@
         
         $update_post=mysqli_query($connection,$query);
         confirmQuery($update_post);
+         echo "Post Edited: ". " ". "<a href='posts.php'>View Posts</a>";
     
     }
 

@@ -20,11 +20,12 @@ if(isset($_POST['create_post'])){
        
         
         
-        $query="insert into posts (post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) values('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}',  '{$post_status}') ";
+        $query="insert into posts (post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) values('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', 0, '{$post_status}') ";
         
         $add_post_query=mysqli_query($connection,$query);
         
-        confirmQuery($add_post_query); 
+        confirmQuery($add_post_query);
+    echo "Post Created: ". " ". "<a href='posts.php'>View Posts</a>";
 
 //<!--
 ////        if(!$add_post_query){

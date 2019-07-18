@@ -56,9 +56,10 @@ if(isset($_POST['edit_users'])){
         
         $edit_user_query=mysqli_query($connection,$query);
         
-        confirmQuery($edit_user_query); 
+        confirmQuery($edit_user_query);
+        
         header("Location: users.php");
-
+         echo "User Edited: ". " ". "<a href='users.php'>View Users</a>";
 //<!--
 ////        if(!$add_post_query){
 ////            die ('Query Fail'.mysqli_error($connection));
