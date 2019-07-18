@@ -29,22 +29,27 @@
             
         }
         
-        if($username !== $db_user_name || $password !== $db_user_password ){
-            header("Location: ../index.php");
-            //echo "<h1>Username and password missmatch. Check again!</h1>";
-        }else if($username == $db_user_name && $password == $db_user_password ){
+        
+        
+
+     
+        //check whether the identical
+        if($username === $db_user_name && $password === $db_user_password ){
             
             //setting session
             $_SESSION['username']=$db_user_name;
             $_SESSION['password']=$db_user_password;
             $_SESSION['firstname']=$db_user_firstname;
             $_SESSION['lastname']=$db_user_lastname ;
+            $_SESSION['user_role']=$db_user_role ;
             
             
             header("Location: ../admin/");
         }else{
             header("Location: ../index.php"); 
         }
-            
+        
+        
+        
     }
 ?>
