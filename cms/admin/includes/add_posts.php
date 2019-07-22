@@ -77,7 +77,13 @@ if(isset($_POST['create_post'])){
 
  <div class="form-group">
     <label for="post_status">Post Status</label>
-    <input type="text" class="form-control" name="status">
+    <select name="status" id="">
+        <option value="Draft">Select Options </option>
+         <option value="Published">Published</option>
+         <option value="Draft">Draft </option>
+        
+    </select>
+    
 </div>
  
  <div class="form-group">

@@ -1,12 +1,38 @@
-                 
+  <?php
+if(isset($_POST['checkBoxArray'])){
+    
+    foreach($_POST['checkBoxArray'] as $postValueId){
+        
+        $bulk_option=$_POST['bulk_option'];
+        
+        switch($bulk_option){
+                
+            case 'published':
+                $query = "update posts set post_status = '{$bulk_option}' where post_id=$postValueId";
+                $update_to_published_status=mysqli_query($connection,$query);
+                break;
+                
+                
+        }
+        
+        
+    }
+}
+
+
+?>
+                         
+                                        
+                                                       
+                                                                                     
                           <form action="" method="post">
                           <div id="bulkOptionContainer" class="col-xs-4">
                               
-                              <select class="form-control" name="" id="">
+                              <select class="form-control" name="bulk_option" id="">
                                   <option value="">Select Option</option>
-                                  <option value="">Publish</option>
-                                  <option value="">Draft</option>
-                                  <option value="">Delete</option> 
+                                  <option value="published">Publish</option>
+                                  <option value="draft">Draft</option>
+                                  <option value="delete">Delete</option> 
                                   
                                   
                               </select>
@@ -23,6 +49,7 @@
                           <table class="table table-bordered table-hover">
                            <thead>
                                <tr>
+                                  <th><input class="selectAllBoxes" type="checkbox"></th>
                                    <th>ID</th>
                                    <th>Author</th>
                                    <th>Title</th>
@@ -53,6 +80,11 @@
                                  $cat_date=$row["post_date"];
                                    
                                echo "<tr>";
+                                ?>   
+                                   
+                               <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $post_id; ?>'></td>
+                               
+                            <?php                 
                                echo "<td>$post_id</td>";
                                echo "<td>$post_author</td>";
                                echo "<td>$cat_title</td>";
@@ -68,7 +100,8 @@
                                    
                                                 echo "<td>{$cat_title}</td>";   
                                                 }
-                                   
+                               
+                                         
                                echo "<td>$cat_status</td>";
                                echo "<td><img class='img-responsive' width='100' src='../images/$cat_image' alt='image'></td>";
                                echo "<td>$cat_tags</td>";
