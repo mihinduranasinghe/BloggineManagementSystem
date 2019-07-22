@@ -13,6 +13,12 @@ if(isset($_POST['checkBoxArray'])){
                 break;
                 
                 
+                case 'delete':
+                $query = "delete from posts where post_id=$postValueId";
+                $delete_bulk_post=mysqli_query($connection,$query);
+                break;
+                
+                
         }
         
         
@@ -41,7 +47,7 @@ if(isset($_POST['checkBoxArray'])){
                           
                           <div class="col-xc-4">
                               <input type="submit" name="submit" class="btn btn-success" value="Apply">
-                              <a href="add_posts.php" class="btn btn-primary">Add New</a>
+                              <a href="posts.php?source=add" class="btn btn-primary">Add New</a>
                               
                           </div>
                           
@@ -59,6 +65,9 @@ if(isset($_POST['checkBoxArray'])){
                                    <th>Tags</th>
                                    <th>Comments</th>
                                    <th>Date</th>
+                                   <th>View</th>
+                                   <th>Edit</th>
+                                   <th>Delete</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -107,7 +116,11 @@ if(isset($_POST['checkBoxArray'])){
                                echo "<td>$cat_tags</td>";
                                echo "<td>$post_comment_count</td>";
                                echo "<td>$cat_date</td>";
+                                   
+                               echo "<td><a href='../post.php?p_id={$post_id}'>View</a></td>";
+                                   
                                echo "<td><a href='posts.php?source=edit&p_id={$post_id}'>Edit</a></td>";
+                                   
                                echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
                                
                                echo "</tr>";

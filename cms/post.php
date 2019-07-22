@@ -64,12 +64,15 @@
             <!-- Blog Comments -->
                 <?php
                     if(isset($_POST['create'])){
-                     $id=$_GET['p_id'];
+                        
+                        $id=$_GET['p_id'];
                         $comment_author= $_POST['comment_author'];
                         $comment_email= $_POST['comment_email'];
                         $comment_content= $_POST['content'];
                         
-                         $query="insert into comments (comment_post_id, comment_author, comment_email,comment_content,comment_status,comment_date) values('$id', '{$comment_author}', '{$comment_email}', '{$comment_content}', 'Unapproved', now()) ";
+                        if(!empty($comment_author) && !empty($comment_email) && !empty($comment_content) ){
+                            
+                            $query="insert into comments (comment_post_id, comment_author, comment_email,comment_content,comment_status,comment_date) values('$id', '{$comment_author}', '{$comment_email}', '{$comment_content}', 'Unapproved', now()) ";
         
                         $add_comment_query=mysqli_query($connection,$query);
         
@@ -82,6 +85,19 @@
                         
                         
                     }
+                        else{
+                            echo"<script>alert('Fields cannot be empty')</script>";
+                            
+                            
+                        }
+                        
+                            
+                        }
+                        
+                        
+                     
+                        
+                         
                 
                
                 
