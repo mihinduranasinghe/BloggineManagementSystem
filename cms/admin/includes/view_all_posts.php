@@ -1,4 +1,26 @@
-                 <table class="table table-bordered table-hover">
+                 
+                          <form action="" method="post">
+                          <div id="bulkOptionContainer" class="col-xs-4">
+                              
+                              <select class="form-control" name="" id="">
+                                  <option value="">Select Option</option>
+                                  <option value="">Publish</option>
+                                  <option value="">Draft</option>
+                                  <option value="">Delete</option> 
+                                  
+                                  
+                              </select>
+                              
+                          </div>
+                          
+                          <div class="col-xc-4">
+                              <input type="submit" name="submit" class="btn btn-success" value="Apply">
+                              <a href="add_posts.php" class="btn btn-primary">Add New</a>
+                              
+                          </div>
+                          
+                          
+                          <table class="table table-bordered table-hover">
                            <thead>
                                <tr>
                                    <th>ID</th>
@@ -64,6 +86,9 @@
                           
                            </tbody>
                        </table>
+                       </form>
+                       
+                       
                        <?php  
                             if(isset($_GET['delete'])){
                                 $the_post_id=$_GET['delete'];
