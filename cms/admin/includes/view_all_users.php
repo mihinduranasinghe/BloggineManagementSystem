@@ -74,7 +74,7 @@
                                echo "<td><a href='users.php?change_to_subscriber=$user_id'>Change To Subscriber</a></td>";
                                echo "<td><a href='users.php?source=edit_users&edit_users=$user_id'>Edit</a></td>";
                                
-                               echo "<td><a href='users.php?delete=$user_id'>Delete</a></td>";
+                               echo "<td><a onClick=\" javascript: return confirm('Are you sure you want to delete'); \"href='users.php?delete=$user_id'>Delete</a></td>";
                                
                                echo "</tr>";
                                

@@ -37,7 +37,7 @@ if(isset($_POST['edit_users'])){
     
     move_uploaded_file($user_image_temp, "../images/user_images/$user_image");
     
-       if(empty($user_image)){
+    if(empty($user_image)){
              $query="select * from users where user_id=$the_user_id ";
             $select_image=mysqli_query($connection,$query);
             confirmQuery($select_image);
@@ -51,8 +51,22 @@ if(isset($_POST['edit_users'])){
     
        
         
+    
+    
+    $query="select randSalt from users";
+    $select_randSalt_query=mysqli_query($connection,$query);
+    if(!$select_randSalt_query){
+        die("QUERY FAIL: ". mysqli_error($connection));
+    }
+    //decripting password to display in password edit input field
+    $row=mysqli_fetch_array($select_randSalt_query);
+    $salt=$row['randSalt'];
+    $hashed_password=crypt($user_password,$salt);
+    // Here we dnt need to loop this part because randSalt is a redefined string so all the records have the same thing so we dont need to loop
+    
+       
         
-        $query="update users set user_name='{$username}',user_password='{$user_password}', user_firstname='{$user_firstname}', user_lastname='{$user_lastname}', user_email= '{$user_email}', user_image='{$user_image}', user_role='{$user_role}' where user_id=$user_id ";
+        $query="update users set user_name='{$username}',user_password='{$hashed_password}', user_firstname='{$user_firstname}', user_lastname='{$user_lastname}', user_email= '{$user_email}', user_image='{$user_image}', user_role='{$user_role}' where user_id=$user_id ";
         
         $edit_user_query=mysqli_query($connection,$query);
         
@@ -93,7 +107,7 @@ if(isset($_POST['edit_users'])){
 <div class="form-group">
     <select name="user_role" id="" >
        
-        <option value="Subscriber"><?php echo $user_role; ?> </option>
+        <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?> </option>
         <?php
         if($user_role == 'Admin'){
          echo "<option value='Subscribe'>Subscribe</option>";

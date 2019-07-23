@@ -20,7 +20,7 @@ if(isset($_POST['create_users'])){
        
         
         
-        $query="insert into users (user_name,user_password, user_firstname, user_lastname, user_email, user_image, user_role,randSalt) values('{$username}', '{$user_password}','{$user_firstname}', '{$user_lastname}', '{$user_email}','{$user_image}','{$user_role}','1') ";
+        $query="insert into users (user_name,user_password, user_firstname, user_lastname, user_email, user_image, user_role) values('{$username}', '{$user_password}','{$user_firstname}', '{$user_lastname}', '{$user_email}','{$user_image}','{$user_role}') ";
         
         $add_user_query=mysqli_query($connection,$query);
         

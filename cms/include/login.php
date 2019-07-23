@@ -29,12 +29,15 @@
             
         }
         
+      $password = crypt($password,$db_user_password);
+        //decripting to log in
+        
         
         
 
      
-        //check whether the identical
-        if($username === $db_user_name && $password === $db_user_password ){
+        //check whether the identicality
+        if($username == $db_user_name && $password == $db_user_password ){
             
             //setting session
             $_SESSION['username']=$db_user_name;
