@@ -1,5 +1,52 @@
 <?php
 
+
+
+function users_Online(){
+    
+    
+    if(isset($_GET['onlineUsers'])){
+            //user online status
+        global $connection;
+            
+                            if(!$connection){
+                                session_start();
+                                include("../include/db.php");
+                                
+                                $session=session_id();
+                                $time = time();
+                                $time_out_in_second = 60;
+                                $time_out = $time - $time_out_in_second;
+
+                                $query = "select * from users_online where session = '$session'";
+                                $send_query=mysqli_query($connection,$query);
+                                $count=mysqli_num_rows($send_query);
+
+                                //if no one is loged in
+                                if($count==NULL){
+                                mysqli_query($connection,"insert into users_online(session,time) values('$session','$time')");
+                                }
+                                //if there are some loged in
+                                else{
+                                 mysqli_query($connection,"update users_online set time='$time' where session='$session' ");
+
+                                }
+
+                                $users_online_query=mysqli_query($connection,"select * from users_online where time > '$time_out' "); 
+                                echo $count_user=mysqli_num_rows($users_online_query);
+                            }
+    
+        
+        
+         
+    }//get request
+}
+users_Online();
+
+
+
+
+
 function confirmQuery($result){
     global $connection;
     if(!$result){

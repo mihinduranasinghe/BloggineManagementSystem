@@ -19,7 +19,7 @@ if(isset($_GET['edit_users'])){
        }
                                  
     
-}
+
 
 if(isset($_POST['edit_users'])){
     $user_firstname=$_POST['user_firstname'];
@@ -53,27 +53,51 @@ if(isset($_POST['edit_users'])){
         
     
     
-    $query="select randSalt from users";
-    $select_randSalt_query=mysqli_query($connection,$query);
-    if(!$select_randSalt_query){
-        die("QUERY FAIL: ". mysqli_error($connection));
-    }
+//    $query="select randSalt from users";
+//    $select_randSalt_query=mysqli_query($connection,$query);
+//    if(!$select_randSalt_query){
+//        die("QUERY FAIL: ". mysqli_error($connection));
+//    }
     //decripting password to display in password edit input field
-    $row=mysqli_fetch_array($select_randSalt_query);
-    $salt=$row['randSalt'];
-    $hashed_password=crypt($user_password,$salt);
+//    $row=mysqli_fetch_array($select_randSalt_query);
+//    $salt=$row['randSalt'];
+//    $hashed_password=crypt($user_password,$salt);
     // Here we dnt need to loop this part because randSalt is a redefined string so all the records have the same thing so we dont need to loop
     
        
+    
+    if(!empty($user_password)){
+        $query_password="select user_password from users where user_id = $the_user_id";
+        $get_user_query=mysqli_query($connection,$query_password);
+        
+        $row=mysqli_fetch_array($get_user_query);
+        //no need to use a loop because there is only one result
+        $db_user_password=$row['user_password']; 
+        
+        confirmQuery($get_user_query);
+        
+        if($db_user_password != $user_password){
+        $hashed_password= password_hash($password, PASSWORD_BCRYPT,array('cost' => 12 ));
+    }
         
         $query="update users set user_name='{$username}',user_password='{$hashed_password}', user_firstname='{$user_firstname}', user_lastname='{$user_lastname}', user_email= '{$user_email}', user_image='{$user_image}', user_role='{$user_role}' where user_id=$user_id ";
         
         $edit_user_query=mysqli_query($connection,$query);
+    
         
         confirmQuery($edit_user_query);
         
         header("Location: users.php");
-         echo "User Edited: ". " ". "<a href='users.php'>View Users</a>";
+        echo "User Edited: ". " ". "<a href='users.php'>View Users</a>";
+        
+    }
+    
+    
+    
+    
+        
+        
+         
 //<!--
 ////        if(!$add_post_query){
 ////            die ('Query Fail'.mysqli_error($connection));
@@ -81,9 +105,19 @@ if(isset($_POST['edit_users'])){
 ////        }
 //
 
-     
+}
     
 }
+
+else{
+    
+   header("Location: index.php");
+    
+    
+}
+
+
+
 ?>
    
 
@@ -138,7 +172,7 @@ if(isset($_POST['edit_users'])){
 
  <div class="form-group">
     <label for="User_password">Password</label>
-    <input type="password" class="form-control" name="user_password" value="<?php echo $user_password; ?>" >
+    <input type="password" class="form-control" name="user_password" value="" >
 </div>
  
 

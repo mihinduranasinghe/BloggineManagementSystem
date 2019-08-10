@@ -18,7 +18,9 @@ if(isset($_POST['create_users'])){
     
     
        
-        
+    $user_password= password_hash($user_password, PASSWORD_BCRYPT,array('cost' => 10 ));  //new hashpasssword method  
+    
+    
         
         $query="insert into users (user_name,user_password, user_firstname, user_lastname, user_email, user_image, user_role) values('{$username}', '{$user_password}','{$user_firstname}', '{$user_lastname}', '{$user_email}','{$user_image}','{$user_role}') ";
         

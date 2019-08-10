@@ -39,6 +39,9 @@ if(!isset($_SESSION['user_role'])){
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
+    
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/scripts.js"></script>
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

@@ -1,7 +1,20 @@
-<?php include "includes/admin_header.php"; ?>
+    <?php include "includes/admin_header.php"; ?>
 
 
     <div id="wrapper">
+        
+        <?php
+        
+        
+ 
+        
+        ?>
+        
+        
+        
+        
+        
+        
 
         <!-- Navigation -->
 <?php include "includes/admin_navigation.php"; ?>
@@ -13,13 +26,16 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
+                            <h1 class="page-header">
                             Welcome To Admin Area
                             
                             
                             
                             <small><?php echo $_SESSION['username'];?></small>
                         </h1>
+                        
+                       
+                        
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>

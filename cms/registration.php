@@ -18,15 +18,23 @@ if(isset($_POST['submit'])){
             $password=mysqli_real_escape_string($connection,$password);
             //sql injection prevent from hackers
             
-            $query="select randSalt from users";
-            $select_randSalt_query=mysqli_query($connection,$query);
-            if(!$select_randSalt_query){
-            die("QUERY FAIL".mysqli_error($connection));
-            }
+            $password= password_hash($password, PASSWORD_BCRYPT,array('cost' => 12 ));
+            //NEW HASH PASSWORD ENCRYPTION WITHOUT RANDSALT
             
-            $row=mysqli_fetch_array($select_randSalt_query);
-            $salt=$row['randSalt'];
-            $password=crypt($password, $salt); 
+            
+            
+            
+            
+            
+//            $query="select randSalt from users";
+//            $select_randSalt_query=mysqli_query($connection,$query);
+//            if(!$select_randSalt_query){
+//            die("QUERY FAIL".mysqli_error($connection));
+//            }
+            
+//            $row=mysqli_fetch_array($select_randSalt_query);
+//            $salt=$row['randSalt'];
+//            $password=crypt($password, $salt); 
             //encripting password to store in the database
             
             $query="insert into users (user_name,user_email,user_password,user_firstname,user_lastname,user_image,user_role) values('{$username}','{$email}','{$password}',' ', ' ', ' ','subscriber')";
