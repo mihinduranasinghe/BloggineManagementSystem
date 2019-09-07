@@ -1,17 +1,17 @@
 <?php
 
-if(isset($_POST['create_post'])){
-    $post_title=$_POST['title'];
-    $post_author=$_POST['author'];
-    $post_category_id=$_POST['post_category'];
-    $post_status=$_POST['status'];
+if(isset($_POST['create_post'])){//like this do this escape injection for all database accessess in your project launcing to the internet
+    $post_title=escape($_POST['title']);
+    $post_author=escape($_POST['author']);
+    $post_category_id=escape($_POST['post_category']);
+    $post_status=escape($_POST['status']);
     
-    $post_image=$_FILES['image']['name'];
+    $post_image=escape($_FILES['image']['name']);
     $post_image_temp=$_FILES['image']['tmp_name'];
     
-    $post_tags=$_POST['tags'];
-    $post_content=$_POST['content'];
-    $post_date=date('d-m-y');
+    $post_tags=escape($_POST['tags']);
+    $post_content=escape($_POST['content']);
+    $post_date=escape(date('d-m-y'));
 //    $post_comment_count=4;
     
     move_uploaded_file($post_image_temp, "../images/$post_image");
@@ -52,7 +52,9 @@ if(isset($_POST['create_post'])){
 
 
 <div class="form-group">
+    <label for="category">Category:</label>
     <select name="post_category" id="">
+      
         <?php
         $query="SELECT * FROM category";
         $select_category=mysqli_query($connection,$query);
